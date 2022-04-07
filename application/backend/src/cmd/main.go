@@ -15,8 +15,12 @@ import (
 	"os/signal"
 	"time"
 
+	_ "famous-quote/cmd/docs"
+
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"gorm.io/gorm"
 )
 
@@ -75,6 +79,13 @@ func main() {
 	server := &http.Server{
 		Addr:    configs.Config.AddressListener(),
 		Handler: r,
+	}
+
+	defer func() {
+		db.Close()
+	}()
+	if configs.Config.RunMode == gin.DebugMode && configs.Config.Env != "PRODUCTION" {
+		r.GET("/famous-quotes/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	}
 
 	go func() {

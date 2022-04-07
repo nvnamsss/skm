@@ -14,6 +14,14 @@ type QuotesController struct {
 	quotesService services.QuotesService
 }
 
+// @Description create quotes
+// @Tags Quotes
+// @Accept json
+// @Produce json
+// @Success 200 {object} dtos.GetQuotesResponse
+// @Failure 401 {object} errors.AppError
+// @Failure 500 {object} errors.AppError
+// @Router /v1/quotes [get]
 func (h *QuotesController) Get(c *gin.Context) {
 	var (
 		res *dtos.GetQuotesResponse
@@ -28,6 +36,15 @@ func (h *QuotesController) Get(c *gin.Context) {
 	h.JSON(c, res)
 }
 
+// @Description create quotes
+// @Tags Quotes
+// @Accept json
+// @Produce json
+// @Param request	body dtos.CreateQuotesRequest	true "request"
+// @Success 200 {object} dtos.CreateQuotesResponse
+// @Failure 401 {object} errors.AppError
+// @Failure 500 {object} errors.AppError
+// @Router /v1/quotes [post]
 func (h *QuotesController) Create(c *gin.Context) {
 	var (
 		req dtos.CreateQuotesRequest
@@ -48,6 +65,16 @@ func (h *QuotesController) Create(c *gin.Context) {
 	h.JSON(c, res)
 }
 
+// @Description create quotes
+// @Tags Quotes
+// @Accept json
+// @Produce json
+// @Param id	path int64	true "quotes id"
+// @Param values	body dtos.LikeQuotesRequest	true "request"
+// @Success 200 {object} dtos.LikeQuotesResponse
+// @Failure 401 {object} errors.AppError
+// @Failure 500 {object} errors.AppError
+// @Router /v1/quotes/like/:id [post]
 func (h *QuotesController) Like(c *gin.Context) {
 	var (
 		req dtos.LikeQuotesRequest

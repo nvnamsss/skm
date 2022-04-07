@@ -13,6 +13,9 @@ require (
 )
 
 require (
+	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/jinzhu/copier v0.3.5
+	github.com/swaggo/gin-swagger v1.4.1
+	github.com/swaggo/swag v1.7.9
 	google.golang.org/appengine v1.6.7 // indirect
 )
