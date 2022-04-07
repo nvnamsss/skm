@@ -17,3 +17,10 @@ gen_docs:
 	@rm -rf src/main.go
 	@rm -rf src/cmd/docs
 	@mv src/docs src/cmd
+gen_mock_repo:
+	cd $(PWD)/src && mockery --case=underscore --dir=$(PWD)/src/repositories --output $(PWD)/src/mocks/repositories --all ; \
+
+test:
+	@cd src && go test --cover -p 1 -v -failfast -coverprofile=src.cov `go list ./...`
+	@cd src && cat src.cov | grep -v "fake" > fine.cov
+	@cd src && go tool cover -func=fine.cov
