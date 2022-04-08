@@ -17,6 +17,7 @@ import (
 
 	_ "famous-quote/cmd/docs"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -51,8 +52,16 @@ func main() {
 	if _, err := redisClient.Ping(context.Background()).Result(); err != nil {
 		logger.Fatalf(err, "Creating connection to redis: %v", err)
 	}
-	var r = gin.Default()
+	corsConfig := cors.New(cors.Config{
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
+		AllowOrigins:     []string{"*"},
+		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "Authorization", "TimezoneOffset"},
+		AllowCredentials: false,
+		MaxAge:           12 * time.Hour,
+	})
 
+	var r = gin.Default()
+	r.Use(corsConfig)
 	var (
 		cacheAdapter = cache.NewRedisAdapter(redisClient)
 	)
