@@ -30,6 +30,7 @@ func (s *quotesService) Get(ctx context.Context) (*dtos.GetQuotesResponse, error
 	}
 	var data dtos.QuotesData
 	_ = copier.Copy(&data, quotes)
+	logger.Infof("hi mom")
 
 	return &dtos.GetQuotesResponse{
 		Meta: dtos.Meta{
@@ -66,6 +67,7 @@ func (s *quotesService) Like(ctx context.Context, req *dtos.LikeQuotesRequest) (
 	if req.Negative {
 		incr = -1
 	}
+	logger.Infof("req: %v", req)
 	like, err := s.quotesRepository.Like(ctx, req.ID, incr)
 	if err != nil {
 		logger.Context(ctx).Errorf("like got error: %v", err)

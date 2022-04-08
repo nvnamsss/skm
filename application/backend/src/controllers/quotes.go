@@ -3,6 +3,7 @@ package controllers
 import (
 	"famous-quote/dtos"
 	"famous-quote/errors"
+	"famous-quote/logger"
 	"famous-quote/services"
 	"strconv"
 
@@ -32,7 +33,7 @@ func (h *QuotesController) Get(c *gin.Context) {
 		h.HandleError(c, err)
 		return
 	}
-
+	logger.Infof("him om")
 	h.JSON(c, res)
 }
 

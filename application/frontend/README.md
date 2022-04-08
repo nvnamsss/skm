@@ -1,29 +1,40 @@
-# skm
+# vite React TypeScript tailwindcss starter
 
-This template should help get you started developing with Vue 3 in Vite.
+Template for vite, React + tailwindcss + TypeScript projects with some tools preconfigured.
 
-## Recommended IDE Setup
+## About
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.vscode-typescript-vue-plugin).
+Template for vite, React + tailwindcss + TypeScript projects with some tools preconfigured.
 
-## Customize configuration
+![Screenshot](assets/screenshot.png)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Libraries
 
-## Project Setup
+- [Jest](https://jestjs.io/)
+- [React](https://reactjs.org/)
+- [tailwindcss](https://tailwindcss.com/)
+  - [tailwindcss forms plugin](https://tailwindcss-forms.vercel.app/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [vite](https://vitejs.dev/)
 
-```sh
-npm install
-```
+### Tools
 
-### Compile and Hot-Reload for Development
+- [commitlint](https://commitlint.js.org)
+- [Conventional Commits](https://www.conventionalcommits.org)
+- [editorconfig](https://editorconfig.org/)
+- [eslint](https://eslint.org/)
+- [husky](https://typicode.github.io/husky/#/)
+- [Prettier](https://prettier.io/)
+- [VS Code settings](https://code.visualstudio.com/)
 
-```sh
-npm run dev
-```
+## Usage
 
-### Compile and Minify for Production
+Create a new project from this template by clicking the "Use this template" button:
 
-```sh
-npm run build
+![](assets/template-usage.png)
+
+```bash
+yarn
+yarn dev
+yarn test
 ```

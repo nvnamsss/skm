@@ -52,11 +52,13 @@ func (r *quotesRepository) Get(ctx context.Context, id int64) (*models.Quotes, e
 
 func (r *quotesRepository) GetRandom(ctx context.Context) (*models.Quotes, error) {
 	id, err := r.cache.GetInt64(ctx, "today")
+	logger.Infof("%v", id)
 	if err != nil {
 		logger.Context(ctx).Errorf("get today quotes error: %v", err)
 		q := &models.QuotesOfTheDay{}
 		if err := r.db.Gormer().WithContext(ctx).Last(q).Error; err != nil {
 			if err != gorm.ErrRecordNotFound {
+				logger.Context(ctx).Errorf("aaaa")
 				return nil, err
 			}
 		}

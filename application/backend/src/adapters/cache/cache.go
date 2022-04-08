@@ -2,7 +2,6 @@ package cache
 
 import (
 	"context"
-	"strconv"
 	"time"
 
 	"github.com/go-redis/redis/v8"
@@ -47,8 +46,9 @@ func (r *redisAdapter) GetInt64(ctx context.Context, key string) (int64, error) 
 	if err != nil {
 		return 0, err
 	}
-
-	return strconv.ParseInt(string(data), 10, 64)
+	var rs int64
+	msgpack.Unmarshal(data, &rs)
+	return rs, nil
 }
 
 func (a *redisAdapter) HSet(ctx context.Context, key string, field string, v interface{}) error {
