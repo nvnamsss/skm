@@ -56,8 +56,6 @@ func main() {
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
 		AllowOrigins:     []string{"*"},
 		AllowHeaders:     []string{"*"},
-		AllowAllOrigins:  true,
-		AllowWildcard:    true,
 		AllowCredentials: true,
 		MaxAge:           12 * time.Hour,
 	})
