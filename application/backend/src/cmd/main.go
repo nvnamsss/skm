@@ -79,8 +79,8 @@ func main() {
 	{
 		quotes := v1.Group("/quotes")
 		{
-			quotes.POST("/", quotesController.Create)
-			quotes.GET("/", quotesController.Get)
+			quotes.POST("", quotesController.Create)
+			quotes.GET("", quotesController.Get)
 			quotes.POST("/like/:id", quotesController.Like)
 		}
 	}
