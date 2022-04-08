@@ -52,9 +52,17 @@ func main() {
 	if _, err := redisClient.Ping(context.Background()).Result(); err != nil {
 		logger.Fatalf(err, "Creating connection to redis: %v", err)
 	}
-
+	corsConfig := cors.New(cors.Config{
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"},
+		AllowOrigins:     []string{"*"},
+		AllowHeaders:     []string{"*"},
+		AllowAllOrigins:  true,
+		AllowWildcard:    true,
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	})
 	var r = gin.Default()
-	r.Use(cors.Default())
+	r.Use(corsConfig)
 
 	var (
 		cacheAdapter = cache.NewRedisAdapter(redisClient)
