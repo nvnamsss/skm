@@ -4,8 +4,8 @@ using namespace std;
 class Solution {
 public:
     void product(vector<int>& arr) {
-        vector<int> ans = vector<int>(arr.size());
-        int dp = 1;
+        vector<long> ans = vector<long>(arr.size());
+        long dp = 1;
         ans[0] = 1;
         for (int i = 0; i < arr.size(); i++)
         {
